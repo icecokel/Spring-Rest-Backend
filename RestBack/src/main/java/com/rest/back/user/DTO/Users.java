@@ -1,4 +1,4 @@
-package com.rest.back.domain;
+package com.rest.back.user.DTO;
 
 import lombok.Data;
 

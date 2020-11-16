@@ -1,4 +1,4 @@
-package com.rest.back;
+package com.rest.back.user.controller;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.rest.back.domain.Users;
-import com.rest.back.service.UserService;
+import com.rest.back.user.DTO.Users;
+import com.rest.back.user.Service.UserService;
 
 @RestController
 @CrossOrigin("*")
