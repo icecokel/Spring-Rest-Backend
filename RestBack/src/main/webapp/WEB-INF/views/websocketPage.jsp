@@ -12,21 +12,28 @@
 	<h1>WebsocketViewPage</h1>
 
 	<input type="text" id="sendMsg"></input>
-	<button id="btnSend" onClick="sendTest()">test</button>
+	<button id="btnSend" onClick="sendTest()">send Massage</button>
+	
 
 	<script>
-		function test() {
-			alert("232")
+		var ws = new WebSocket("ws://localhost:8080/replyEcho?userId=icecokel");
+
+		var sendMsg = document.getElementById("sendMsg");
+		
+		window.addEventListener('DOMContentLoaded', function(event){
+			onOpen();		    
+		});
+			
+		
+		function onOpen(){
+			ws.onopen = function() {
+				console.log("connect!");
+				setTimeout(function() {
+					connect()
+				}, 1000);
+			};	
 		}
-		var ws = new WebSocket("ws://localhost:8080/replyEcho?bno=1234");
-
-		ws.onopen = function() {
-			console.log("connect!");
-			setTimeout(function() {
-				connect()
-			}, 1000);
-		};
-
+	
 		ws.onmessage = function(event) {
 			console.log(event.data + '\n');
 		};
@@ -39,14 +46,12 @@
 		}
 
 		var btnSend = document.getElementById("btnSend");
-		var sendMsg = document.getElementById("sendMsg");
-		var msg = sendMsg.value;
+
 
 		btnSend.addEventListener("click", function(e) {
 			e.preventDefault();
-			ws.send(msg);
-
-			sendMsg.value = "";
+			console.log(sendMsg.value);
+			ws.send(sendMsg.value);
 		})
 	</script>
 
